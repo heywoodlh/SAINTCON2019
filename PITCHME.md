@@ -11,7 +11,7 @@ _paginate: false
 
 # <!--fit--> Docker, Your Shell and Security
 
-#### *Some ideas on how to use Docker to improve security workflows*  
+#### *Ideas on using Docker to improve security workflows*  
 
 __https://github.com/heywoodlh/SAINTCON2019__
 -------------------------------------------------
@@ -104,7 +104,7 @@ Pull (download) a Docker image from hub.docker.com for later use:
 docker pull ubuntu
 ```
 
-Run an Ubuntu container that runs the command `echo "hello world"`:
+Run an Ubuntu container that executes the command `echo "hello world"`:
 
 ```bash
 docker run ubuntu echo "hello world"
