@@ -12,12 +12,13 @@ _paginate: false
 # <!--fit--> Docker, Your Shell and Security
 
 #### *Some ideas on how to use Docker to improve security workflows*  
+
+__https://github.com/heywoodlh/SAINTCON2019__
 -------------------------------------------------
 
 ### Spencer Heywood
 *Security Analyst @ Utah Education Network*
 
-__https://github.com/heywoodlh/SAINTCON2019__
 
 
 -------------------------------------------------
