@@ -52,15 +52,15 @@ __https://github.com/heywoodlh/__
 ###### A Dockerfile contains the build instructions when a Docker image is created.
 
 ```bash
-FROM alpine    ### Use the official Alpine Docker image as the base
+FROM ubuntu    ### Use the official Ubuntu Docker image as the base
 
-RUN apk add busybox-extras netcat-openbsd    ### Install telnet and netcat
+RUN apt update && apt install telnet netcat -y    ### Install telnet and netcat
 
-CMD "/bin/ash"    ### Set the default command to run in the container
+CMD "/bin/bash"    ### Set the default command to run in the container
 ```
 
 
-_Once a Docker image is built using this Dockerfile, the image could be used to deploy a container to run `telnet` or `netcat`._
+_Once a Docker image is built using this Dockerfile, the image could be used to deploy a container to execute `telnet` or `netcat`._
 
 
 -------------------------------------------------
