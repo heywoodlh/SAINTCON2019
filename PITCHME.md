@@ -13,7 +13,8 @@ _paginate: false
 
 #### *Ideas on using Docker to improve security workflows*  
 
-__https://github.com/heywoodlh/SAINTCON2019__
+__https://heywoodlh-saintcon2019.netlify.com__
+
 -------------------------------------------------
 
 ### Spencer Heywood
@@ -26,18 +27,17 @@ __https://github.com/heywoodlh/__
 # Docker Basics
 
 ### What is Docker? 
-- A cross-platform container service that can run Linux and Windows Applications.
+A cross-platform container service that can run Linux and Windows Applications.
 
 ### What are containers?
-- High-level overview of a container: a tiny machine with pre-packaged software.
-- I often compare containers to _very_ tiny and single-purpose virtual machines.
+High-level overview of a container: a tiny machine with pre-packaged software. I often compare containers to _very_ tiny and single-purpose virtual machines.
 
 -------------------------------------------------
 # Why I use Docker?
 
-- Simplifies installation of command line and server applications
-
 - Cross-platform
+
+- Simplifies installation of command line and server applications
 
 - Widely used
 
@@ -60,8 +60,47 @@ CMD "/bin/bash"    ### Set the default command to run in the container
 ```
 
 
-_Once a Docker image is built using this Dockerfile, the image could be used to deploy a container to execute `telnet` or `netcat`._
+-------------------------------------------------
 
+# Some Docker Command Examples:
+
+Pull (download) a Docker image from hub.docker.com for later use:
+
+```bash
+docker pull ubuntu
+```
+
+Run an Ubuntu container that executes the command `echo "hello world"`:
+
+```bash
+docker run ubuntu echo "hello world"
+```
+
+Get an interactive BASH shell in a newly created Ubuntu container and automatically remove the container ( the `--rm` flag) when the shell exits:
+
+```bash
+docker run --rm -it --name my_ubuntu ubuntu bash
+```
+
+-------------------------------------------------
+
+List running containers:
+
+```bash
+docker ps
+```
+
+Stop and remove a container:
+
+```bash
+docker stop <container id> && docker rm <container id>
+```
+
+Start a currently stopped container:
+
+```bash
+docker start <container id>
+```
 
 -------------------------------------------------
 
@@ -94,47 +133,6 @@ _I.E. for a web application, such as Wordpress, there is often a container dedic
 
 - Container networking is isolated by default (no exposed ports unless configured otherwise).
 
--------------------------------------------------
-
-# Some Docker Command Examples:
-
-Pull (download) a Docker image from hub.docker.com for later use:
-
-```bash
-docker pull ubuntu
-```
-
-Run an Ubuntu container that executes the command `echo "hello world"`:
-
-```bash
-docker run ubuntu echo "hello world"
-```
-
-Get an interactive BASH shell in a newly created Ubuntu container and automatically remove the container ( the `--rm` flag) when the command exits:
-
-```bash
-docker run --rm -it --name my_ubuntu ubuntu bash
-```
-
--------------------------------------------------
-
-List running containers:
-
-```bash
-docker ps
-```
-
-Stop and remove a container:
-
-```bash
-docker stop <container id> && docker rm <container id>
-```
-
-Start a currently stopped container:
-
-```bash
-docker start <container id>
-```
 
 -------------------------------------------------
 # Docker for Security
@@ -154,7 +152,7 @@ docker start <container id>
 # Running Security Tools in Docker via Your Preferred Shell
 
 
-Use BASH aliases, Fish functions or a similar mechanism in your shell to shorten long Docker commands.
+Use BASH or Powershell aliases, Fish functions or a similar mechanism in your shell to shorten long Docker commands.
 
 For example, the following `nmap` command in Docker:
 
@@ -180,7 +178,7 @@ nmap -sS 192.168.1.0/24
 
 ### Start Using Docker+BASH/Fish Today:
 
-A compiled list of common security tool Docker aliases/functions is available for use today in the Github repository of this presentation:
+A compiled list of common security tool Docker aliases/functions is available for use today in the Github repository of this presentation (look at the README for the links):
 
 
 __https://github.com/heywoodlh/SAINTCON2019__
@@ -197,9 +195,9 @@ Nmap:
 alias nmap="docker run --rm --net host --privileged booyaabes/kali-linux-full nmap $@"
 ```
 
-Get an interactive shell in a Kali Docker container:
+Metasploit:
 ```bash
-alias kali="docker run -it --rm --net host --privileged booyaabes/kali-linux-full /bin/bash"
+alias msfconsole="docker run -it --rm --net host booyaabes/kali-linux-full msfconsole $@"
 ```
 
 Deploy OpenVAS for vulnerability scanning:
