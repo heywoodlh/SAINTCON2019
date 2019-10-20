@@ -3,6 +3,13 @@ marp: true
 title: Docker, Your Shell and Security
 description: Some ideas on using Docker to improve security workflows
 theme: haskell
+class:
+- default
+- invert
+- haskell
+- lead
+- lead-invert
+- lead-haskell
 paginate: true
 _paginate: false
 ---
