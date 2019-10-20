@@ -11,9 +11,8 @@ _paginate: false
 
 # <!--fit--> Docker, Your Shell and Security
 
-#### *Some ideas on how to use Docker to improve security workflows*
-
-<br>
+#### *Some ideas on how to use Docker to improve security workflows*  
+-------------------------------------------------
 
 ### Spencer Heywood
 *Security Analyst @ Utah Education Network*
@@ -25,24 +24,24 @@ __https://github.com/heywoodlh/SAINTCON2019__
 # Docker Basics
 
 ### What is Docker? 
-* A cross-platform container service that can run Linux and Windows Applications.
+- A cross-platform container service that can run Linux and Windows Applications.
 
 ### What are containers?
-* High-level overview of a container: a tiny machine with pre-packaged software.
-* I often compare containers to _very_ tiny and single-purpose virtual machines.
+- High-level overview of a container: a tiny machine with pre-packaged software.
+- I often compare containers to _very_ tiny and single-purpose virtual machines.
 
 -------------------------------------------------
 # Why I use Docker?
 
-* Makes it very easy to deploy command line and server applications
+- Simplifies installation of command line and server applications
 
-* Cross-platform
+- Cross-platform
 
-* Widely used
+- Widely used
 
-* User-friendly and well-documented
+- User-friendly and well documented
 
-* Free and open-source
+- Free and open-source
 
 -------------------------------------------------
 
@@ -57,8 +56,9 @@ RUN apk add busybox-extras netcat-openbsd    ### Install telnet and netcat
 
 CMD "/bin/ash"    ### Set the default command to run in the container
 ```
-<br>
-Once a Docker image is built using this Dockerfile, the image could be used to deploy a container to run `telnet` or `netcat`.
+
+
+_Once a Docker image is built using this Dockerfile, the image could be used to deploy a container to run `telnet` or `netcat`._
 
 
 -------------------------------------------------
@@ -68,29 +68,29 @@ Once a Docker image is built using this Dockerfile, the image could be used to d
 -------------------------------------------------
 ### Minimal:
 
-* Containers run on tiny Linux (or Windows) distributions.
-* Provide the minimum required kernel/OS functionality (networking, package manager, etc.) to run an application.
-* Common Linux tools not required by the kernel or application are usually not installed.
+- Containers run on tiny Linux (or Windows) distributions.
+- Provide the minimum required kernel/OS functionality (networking, package manager, etc.) to run an application.
+- Common Linux tools not required by the kernel or application are usually not installed.
 
 
 -------------------------------------------------
 
 ### Single-Purpose:
 
-* Containers are usually built to run a single piece of software.
-* For applications that require multiple pieces of software to run, often the deployment requires multiple linked containers.
+- Containers are usually built to run a single piece of software.
+- For applications that require multiple pieces of software to run, often the deployment requires multiple linked containers.
 
-I.E. for a web application, such as Wordpress, there is often a container dedicated to running your web server _and another separate_ container providing database functionality for the application.
+_I.E. for a web application, such as Wordpress, there is often a container dedicated to running your web server _and another separate_ container providing database functionality for the application._
 
 -------------------------------------------------
 
 ### Secure:
 
-* Containers provide a layer of isolation from the host running the containers.
+- Containers provide a layer of isolation from the host running the containers.
 
-* Containers are isolated from other containers, unless explicitly linked.
+- Containers are isolated from other containers, unless explicitly linked.
 
-* Container networking is isolated by default (no exposed ports unless configured otherwise).
+- Container networking is isolated by default (no exposed ports unless configured otherwise).
 
 -------------------------------------------------
 
@@ -141,20 +141,18 @@ docker start <container id>
 
 # Run Security Tools in Docker Containers!
 
-## _Why?_
+- Keep your security tools isolated from your host (less clutter, more security).
 
-* Keep your security tools isolated from your host (less clutter, more security).
+- Have the same security workflows on Linux, MacOS and Windows (if using WSL 2).
 
-* Have the same security workflows on Linux, MacOS and Windows (if using WSL 2).
-
-* Use resources more efficiently than with a virtual machine.
+- Use resources more efficiently than with a virtual machine.
 
 
 -------------------------------------------------
 # Running Security Tools in Docker via Your Preferred Shell
 
 
-Use BASH aliases, Fish functions or a similar mechanism in your preferred shell to shorten long Docker commands into easy-to-use/shortened commands:
+Use BASH aliases, Fish functions or a similar mechanism in your shell to shorten long Docker commands.
 
 For example, the following `nmap` command in Docker:
 
@@ -180,9 +178,8 @@ nmap -sS 192.168.1.0/24
 
 ### Start Using Docker+BASH/Fish Today:
 
-A compiled list of common security tool aliases/functions contained in Docker is available for use today in the Github repository of this presentation:
+A compiled list of common security tool Docker aliases/functions is available for use today in the Github repository of this presentation:
 
-<br>
 
 __https://github.com/heywoodlh/SAINTCON2019__
 
@@ -200,7 +197,7 @@ alias nmap="docker run --rm --net host --privileged booyaabes/kali-linux-full nm
 
 Get an interactive shell in a Kali Docker container:
 ```bash
-alias kali="docker run -it --rm --net host --privileged -e DISPLAY -v $HOME/.Xauthority:/root/.Xauthority booyaabes/kali-linux-full /bin/bash $@"
+alias kali="docker run -it --rm --net host --privileged booyaabes/kali-linux-full /bin/bash"
 ```
 
 Deploy OpenVAS for vulnerability scanning:
@@ -213,23 +210,27 @@ alias openvas="docker run -d -p 443:443 -p 9390:9390 --name openvas mikesplain/o
 -------------------------------------------------
 # With Great Power Comes Great Responsibility!
 
-### As shown in the previous slides, Docker can be easily weaponized:
-* Docker runs as a privileged service.
-* As a privileged service, Docker can do things like access and manipulate network devices and access files/folders that are normally restricted.
-* There are _tons_ of potentially dangerous tools that could be used against you if the Docker daemon was accessed maliciously.
+Docker can be easily weaponized:
+- Docker runs as a privileged service.
+- As a privileged service, Docker can do things like access and manipulate network devices and access files/folders that are normally restricted.
+- There are _tons_ of potentially dangerous tools available at hub.docker.com that could easily be pulled down and used maliciously.
 
-###### This doesn't mean you shouldn't use Docker, but you should know the risks before you use it.
+###### This doesn't mean you shouldn't use Docker, but you should know the risks before you rely solely on it.
 
 -------------------------------------------------
 
 # Some Security Suggestions:
 
-* If Docker won't be used regularly, don't install it.
+- If Docker won't be used regularly, don't install it.
 
-* Don't be careless with access to the Docker daemon (I.E. on a shared Linux system, don't add users to the `docker` group).
+- Don't be careless with access to the Docker daemon (I.E. on a shared Linux system, don't add users to the `docker` group).
 
-* Use verified/official images from Docker Hub. Malware embedded within Docker containers has been discovered before.
+- Use verified/official images from Docker Hub.
 
-* If using a third party's Docker container look at the Dockerfile when possible. Understand how the container is built and what each command in the Dockerfile is doing. If you aren't sure, don't use the container.
+- If using a third party's Docker container look at the Dockerfile when possible. Understand how the container is built and what each command in the Dockerfile is doing. If you aren't sure, don't use the container.
 
 ###### Docker is a virtualization tool: a lot of the same risks (and benefits) come with other virtualization tools (Virtualbox, VMWare, etc).
+
+-------------------------------------------------
+
+# That's all!
