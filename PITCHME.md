@@ -72,7 +72,6 @@ Once a Docker image is built using this Dockerfile, the image could be used to d
 * Provide the minimum required kernel/OS functionality (networking, package manager, etc.) to run an application.
 * Common Linux tools not required by the kernel or application are usually not installed.
 
-I.E. Alpine Linux's container version is a 2.6 MB download (as of October 2019)
 
 -------------------------------------------------
 
