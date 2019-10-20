@@ -7,9 +7,7 @@ paginate: true
 _paginate: false
 ---
 
-![bg](./assets/gradient.jpg)
-
-# Docker, Your Shell and Security
+# <!--fit--> Docker, Your Shell and Security
 
 #### *Some ideas on how to use Docker to improve security workflows*
 
