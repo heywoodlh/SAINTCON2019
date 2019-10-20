@@ -4,12 +4,7 @@ title: Docker, Your Shell and Security
 description: Some ideas on using Docker to improve security workflows
 theme: haskell
 class:
-- default
-- invert
-- haskell
 - lead
-- lead-invert
-- lead-haskell
 paginate: true
 _paginate: false
 ---
@@ -103,19 +98,19 @@ I.E. for a web application, such as Wordpress, there is often a container dedica
 
 Pull (download) a Docker image from hub.docker.com for later use:
 
-```
+```bash
 docker pull ubuntu
 ```
 
 Run an Ubuntu container that runs the command `echo "hello world"`:
 
-```
+```bash
 docker run ubuntu echo "hello world"
 ```
 
 Get an interactive BASH shell in a newly created Ubuntu container and automatically remove the container ( the `--rm` flag) when the command exits:
 
-```
+```bash
 docker run --rm -it --name my_ubuntu ubuntu bash
 ```
 
@@ -123,19 +118,19 @@ docker run --rm -it --name my_ubuntu ubuntu bash
 
 List running containers:
 
-```
+```bash
 docker ps
 ```
 
 Stop and remove a container:
 
-```
+```bash
 docker stop <container id> && docker rm <container id>
 ```
 
 Start a currently stopped container:
 
-```
+```bash
 docker start <container id>
 ```
 
@@ -163,19 +158,19 @@ Use BASH aliases, Fish functions or a similar mechanism in your preferred shell 
 
 For example, the following `nmap` command in Docker:
 
-```
+```bash
 docker run --rm --net host --privileged booyaabes/kali-linux-full nmap -sS 192.168.1.0/24
 ```
 
 Could be made into a BASH alias:
 
-```
+```bash
 alias nmap="docker run --rm --net host --privileged booyaabes/kali-linux-full nmap $@"
 ```
 
 Which would then allow you to run the `nmap` Docker alias like so:
 
-```
+```bash
 nmap -sS 192.168.1.0/24
 ```
 
@@ -198,6 +193,22 @@ Fish Functions: __https://github.com/heywoodlh/SAINTCON2019/blob/master/security
 
 -------------------------------------------------
 # Some Example BASH Aliases
+Nmap:
+```bash
+alias nmap="docker run --rm --net host --privileged booyaabes/kali-linux-full nmap $@"
+```
+
+Get an interactive shell in a Kali Docker container:
+```bash
+alias kali="docker run -it --rm --net host --privileged -e DISPLAY -v $HOME/.Xauthority:/root/.Xauthority booyaabes/kali-linux-full /bin/bash $@"
+```
+
+Deploy OpenVAS for vulnerability scanning:
+```bash
+alias openvas="docker run -d -p 443:443 -p 9390:9390 --name openvas mikesplain/openvas"
+```
+
+
 
 -------------------------------------------------
 # With Great Power Comes Great Responsibility!
