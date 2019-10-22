@@ -1,12 +1,14 @@
-Today's presentation will be about using Docker in conjunction with your preferred shell to improve your security workflows. I hope to share some ideas on how Docker can be a great addition to your security toolkit and will be sharing some links so that you can start using Docker today in conjunction with the BASH or Fish shells. As noted on this first slide, please check out the slideshow and the links for your own reference at https://heywoodlh-saintcon2019.netlify.com.
+Hello, my name is Spencer Heywood and today I will be sharing some ways I have been using Docker to assist in my security role. I hope to share some ideas on how Docker can be a great addition to your security toolkit and will be sharing some links so that you can start using Docker today in conjunction with the BASH or Fish shells. As noted on this first slide, please check out the slideshow and the links for your own reference at https://heywoodlh-saintcon2019.netlify.com.
+
+I also hope that the workflows I share sheds some light on the potential risks with using Docker as it is a supremely powerful tool that can quickly be weaponized. Security tools are a double-edged sword as the same tool in the hands of a security analyst can be used maliciously. So I hope that this presentation not only adds another tool for you to use but also a caution against being careless with access to Docker.
 
 [next slide]
 
-By way of introduction, my name is Spencer Heywood. I have been a Senior Security Analyst at the Utah Education and Telehealth Network for almost two years now. My background is in Linux systems administration and I really enjoy learning how to use open-source tools to improve all aspects of my own life personally and professionally. 
+To give a bit of background about myself, I have been a Senior Security Analyst at the Utah Education and Telehealth Network for close to two years. My background is in Linux systems administration and I really enjoy learning how to use open-source tools to improve all aspects of my own life personally and professionally. 
 
 I have been using Docker regularly for about 4 years now. Throughout that time, I would say I've only taken the time to understand it and become competent with it within the past two years. My objective today is to distill some of the basic concepts behind Docker and also share how I've been able to use it to augment my security workflows.
 
-A relevant disclaimer as I will later be talking about using your shell in conjunction with Docker is that I primarily use Fish as my preferred shell on my workstations. Most Unix environments have BASH as the default shell so I still interface regularly with BASH so I thought that would be relevant to focus on primarily during the course of this presentation.
+As the title of my presentation suggests, I will later be talking about using your shell in conjunction with Docker. A relevant disclaimer is that I primarily use Fish as my preferred shell on my workstations. Most Unix environments have BASH as the default shell so I still interface regularly with BASH so I thought that would be relevant to focus on primarily during the course of this presentation. And unfortunately, I haven't done any comparable work with Powershell although I know it can be done.
 
 [next slide]
 
