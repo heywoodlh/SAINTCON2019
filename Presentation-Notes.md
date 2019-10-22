@@ -71,6 +71,7 @@ By default, containers are completely isolated and cannot be communicated with u
 
 With some understanding of Docker principles I think we can venture into using Docker for security workflows.
 
+
 [next slide]
 
 One of the ways I have used Docker for my security workflows is by running security tools in Docker containers rather than installing them on my machines. Some tools I have started using in Docker are `nmap`, Metasploit, `dirb`, `hydra`, and Gscript.
@@ -81,6 +82,8 @@ Running your security tools in Docker also keep your tools isolated from your ma
 
 Finally, Docker containers will typically use less resources than a virtual machine. Plus, it's so much quicker to run a command in Docker than to power on a virtual machine, login and then run the command (unless you leave your VM in a suspended state all the time).
 
+
+
 [next slide]
 
 One significant downside to running all your security tools in Docker is that Docker commands can get pretty long, especially for complex commands that require a bunch of arguments. To solve this, you can create an alias in BASH, a function in Fish, an alias in Powershell, or another method that's similar in your preferred shell. For those who aren't super comfortable with BASH yet, an "alias" is a command that refers to another command. An alias is almost like a shortcut command for more complex commands.
@@ -90,6 +93,10 @@ In this example, we are running the `nmap` command using a kali-linux-full image
 As an alternative, you could probably write your own scripts containing the Docker commands you need but I think aliases are a simpler solution. You could also write functions instead of aliases in BASH. 
 
 Since I use Fish as my preferred shell, I use Fish functions to accomplish this.
+
+
+[Demo Metasploit, nmap, Openvas]
+
 
 [next slide]
 
@@ -103,6 +110,7 @@ Sorry Windows users, I have not taken time to create corresponding Powershell al
 As a security professional, using Docker for my security tools makes my life tremendously easier. Docker makes it incredibly easy to weaponize a computer. That's a scary thought because a machine running Docker can easily fetch and begin using security tools maliciously. And it's easy and fast. Tremendous risk is introduced when using Docker. This doesn't mean you shouldn't use Docker at all for this, but the risks should be weighed and considered before deciding to go this route.
 
 The potential risks with Docker come from the fact that it's a highly privileged service. As a privileged service, Docker can mess with network interfaces, access restricted files, mount devices and so on. Docker Hub also houses lots of security software that can be easily accessed. Security tools used by a security professional are also used by malicious actors.
+
 
 [next slide]
 
