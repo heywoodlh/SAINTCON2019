@@ -70,6 +70,8 @@ alias responder="docker run -it --rm --net host booyaabes/kali-linux-full respon
 
 alias searchsploit="docker run --rm booyaabes/kali-linux-full searchsploit $@"
 
+alias setoolkit="docker run -it --rm --net host -w /data -v (pwd):/data -v /tmp:/tmp booyaabes/kali-linux-full setoolkit $@"
+
 alias sniper="docker run --rm -ti menzo/sn1per-docker sniper $@"
 
 alias sqlmap="docker run -it --rm --net host -w /data -v ~/.sqlmap:/root/.sqlmap -v $(pwd):/data -v /tmp:/tmp booyaabes/kali-linux-full sqlmap $@"

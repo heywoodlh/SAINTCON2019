@@ -63,6 +63,10 @@ function fsociety-poweroff
   cd "$working_dir"
 end
 
+function geoiplookup
+    curl ipinfo.io/"$argv[1]"
+end
+
 function gf
   docker run --rm -i heywoodlh/tomnomnom-tools:latest bash -c "cat | gf $argv"
 end
@@ -191,6 +195,10 @@ function searchsploit
   docker run --rm booyaabes/kali-linux-full searchsploit $argv
 end
 
+function setoolkit
+  docker run -it --rm --net host -w /data -v (pwd):/data -v /tmp:/tmp booyaabes/kali-linux-full setoolkit $argv
+end
+
 function sniper
   docker run --rm -ti menzo/sn1per-docker sniper $argv
 end
@@ -245,6 +253,10 @@ end
 
 function webscarab
   docker run -it --rm -w /data -v (pwd):/data -v /tmp:/tmp -e DISPLAY -v $HOME/.Xauthority:/root/.Xauthority --net host booyaabes/kali-linux-full java -jar /usr/bin/webscarab $argv
+end
+
+function whatismyip
+  curl 'https://api.ipify.org?format=text'
 end
 
 function wpscan
